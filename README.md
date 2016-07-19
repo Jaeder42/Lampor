@@ -2,7 +2,7 @@
 Server and web UI for controlling your TelldusCenter.
 Useful if you are running telldus center on a deticated machine.
 
-Lampor = lights in swedish!
+Lampor = lamps in swedish!
 
 # Installation
 This program will require some configuration on your part.
