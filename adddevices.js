@@ -1,12 +1,12 @@
 var telldus = require('telldus');
 var firebase = require('firebase');
 
-
+//Replace the below config with yours!
 var config = {
-    apiKey: "yourapikey",
-    authDomain: "yourdomain.firebaseapp.com",
-    databaseURL: "yourdomain.firebaseio.com",
-    storageBucket: "yourdomain.appspot.com",
+  apiKey: "yourapikey",
+  authDomain: "yourdomain.firebaseapp.com",
+  databaseURL: "yourdomain.firebaseio.com",
+  storageBucket: "yourdomain.appspot.com",
   };
   firebase.initializeApp(config);
 

@@ -1,9 +1,9 @@
-
+//Replace the below config with yours!
 var config = {
-    apiKey: "AIzaSyCJAHiFMRYDyzqf8xrX4OQ2On7tSTvdm2c",
-    authDomain: "daddyo-796f0.firebaseapp.com",
-    databaseURL: "https://daddyo-796f0.firebaseio.com",
-    storageBucket: "daddyo-796f0.appspot.com",
+  apiKey: "yourapikey",
+  authDomain: "yourdomain.firebaseapp.com",
+  databaseURL: "yourdomain.firebaseio.com",
+  storageBucket: "yourdomain.appspot.com",
   };
   firebase.initializeApp(config);
 
@@ -86,12 +86,12 @@ status.appendChild(statustext);
 status.className += 'deviceinteractive btn btn-lg btn-default';
 status.id = 'switch'+device.id;
 
-//Timerbutton
+/*//Timerbutton
 var timer = document.createElement('p');
 var timertext = document.createTextNode('\u263c');
 
 timer.className += 'devicetimer btn btn-lg btn-default'
-timer.appendChild(timertext);
+timer.appendChild(timertext);*/
 //Add to div
   div.appendChild(name);
   div.appendChild(status);
