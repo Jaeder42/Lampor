@@ -102,8 +102,34 @@ var config = {
     var level = parseInt(device);
     dim(deviceId, level)
   }
-    });
+  else if(key == 'timer'){
+    for(var i = 0; i < timers.length; i++){
+      clearTimeout(timers[i]);
+    }
+    if(device == true){
 
+      console.log('Update timer');
+
+      syncTimer(deviceId);
+    }
+
+  }
+  else if(key == 'timersun'){
+    for(var i = 0; i < timers.length; i++){
+      clearTimeout(timers[i]);
+    }
+    if(device == true){
+      firsttime = true;
+      syncSunTimer(deviceId);
+    }
+  }
+
+  });
+
+  }
+  function randomize(id) {
+    //TODO contrsuct function that will make lights turn randomly on and/or off during a certain time period
+    //for exaple when it is dark.
   }
 
   function startFun() {
@@ -118,6 +144,27 @@ var config = {
     console.log(difference);
 
     setTimeout(syncSunTimer, difference);
+  }
+
+  function syncTimer() {
+    console.log('Syncing timer!');
+    firebase.database().ref('/devices/').once('value').then(function(snapshot) {
+      console.log('Got data from firebase');
+      var devices = snapshot.val();
+      for(var i = 0; i < devices.length; i++){
+        if(devices[i] == undefined){i++}
+        var device = devices[i];
+
+        console.log(device);
+
+        var id = device.id;
+        var timer = device.timer;
+        if(timer){
+          updateTimers(id, device.timeron, device.timeroff);
+      }
+    }
+    });
+
   }
 
   function syncSunTimer() {
@@ -185,15 +232,15 @@ var config = {
   function updateSunTimers(id){
     var timeroff = updateTimer(sunrise, true);
     var timeron = updateTimer(sunset, true);
-    setTimeout(function(){ turnOn(id); }, timeron);
-    setTimeout(function(){ turnOff(id); }, timeroff);
+    suntimers.push(setTimeout(function(){ turnOn(id); }, timeron));
+    suntimers.push(setTimeout(function(){ turnOff(id); }, timeroff));
 
   }
   function updateTimers(id, on, off) {
     var timeron = updateTimer(on, false);
     var timeroff = updateTimer(off, false);
-    setTimeout(function(){ turnOn(id); }, timeron);
-    setTimeout(function(){ turnOff(id); }, timeroff);
+    timers.push(setTimeout(function(){ turnOn(id); }, timeron));
+    timers.push(setTimeout(function(){ turnOff(id); }, timeroff));
   }
 
   function updateTimer(time, sun) {
