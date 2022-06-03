@@ -40,7 +40,8 @@ Navigate to you console and click the "Add firebase to your web app". Copy the c
 
 After this, make sure telldus center is running and then navigate to the lampor directory. 
 Run:
-````
+
+```
 node adddevices
 ```
 
